@@ -1,7 +1,4 @@
 public class PalindromeCheckerApp {
-    import java.util.*;
-
-    public class PalindromeCheckerApp {
         public static boolean isPalindrome(String input) {
             LinkedList<Character> list = new LinkedList<>();
             for (char c : input.toLowerCase().toCharArray()) {
