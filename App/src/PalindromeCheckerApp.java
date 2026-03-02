@@ -1,7 +1,7 @@
 public class PalindromeCheckerApp {
     import java.util.*;
 
-    public class uc6 {
+    public class uc7 {
 
         public static void main(String[] args) {
             Scanner scanner = new Scanner(System.in);
@@ -10,18 +10,16 @@ public class PalindromeCheckerApp {
 
             String processed = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
 
-            Queue<Character> queue = new LinkedList<>();
-            Stack<Character> stack = new Stack<>();
+            Deque<Character> deque = new ArrayDeque<>();
 
             for (char ch : processed.toCharArray()) {
-                queue.add(ch);
-                stack.push(ch);
+                deque.addLast(ch);
             }
 
             boolean isPalindrome = true;
 
-            while (!queue.isEmpty()) {
-                if (!queue.remove().equals(stack.pop())) {
+            while (deque.size() > 1) {
+                if (!deque.removeFirst().equals(deque.removeLast())) {
                     isPalindrome = false;
                     break;
                 }
@@ -36,4 +34,5 @@ public class PalindromeCheckerApp {
             scanner.close();
         }
     }
+
 }
