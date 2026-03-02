@@ -1,18 +1,20 @@
 public class PalindromeCheckerApp {
-    public class uc1 {
+        public static boolean isPalindrome(String input) {
+            LinkedList<Character> list = new LinkedList<>();
+            for (char c : input.toLowerCase().toCharArray()) {
+                list.add(c);
+            }
+            while (list.size() > 1) {
+                if (!list.removeFirst().equals(list.removeLast())) {
+                    return false;
+                }
+            }
+            return true;
+        }
 
         public static void main(String[] args) {
-
-            System.out.println("=====================================");
-            System.out.println("      Welcome to Palindrome Checker  ");
-            System.out.println("=====================================");
-
-            System.out.println("Application Name : Palindrome Checker App");
-            System.out.println("Version          : 1.0.0");
-            System.out.println("Author           : daffney" +);
-            System.out.println("-------------------------------------");
-
-            System.out.println("Application started successfully!");
+            String input = "level";
+            System.out.println(isPalindrome(input));
         }
     }
 }
