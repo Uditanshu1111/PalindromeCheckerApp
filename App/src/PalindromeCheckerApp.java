@@ -1,18 +1,28 @@
 public class PalindromeCheckerApp {
-    public class uc1 {
+    import java.util.Scanner;
+
+    public class uc2 {
 
         public static void main(String[] args) {
 
-            System.out.println("=====================================");
-            System.out.println("      Welcome to Palindrome Checker  ");
-            System.out.println("=====================================");
+            Scanner scanner = new Scanner(System.in);
 
-            System.out.println("Application Name : Palindrome Checker App");
-            System.out.println("Version          : 1.0.0");
-            System.out.println("Author           : daffney" +);
-            System.out.println("-------------------------------------");
+            System.out.print("Enter a string: ");
+            String word = scanner.nextLine();
 
-            System.out.println("Application started successfully!");
+            String reversed = "";
+
+            for (int i = word.length() - 1; i >= 0; i--) {
+                reversed = reversed + word.charAt(i);
+            }
+
+            if (word.equals(reversed)) {
+                System.out.println("The string \"" + word + "\" is a Palindrome.");
+            } else {
+                System.out.println("The string \"" + word + "\" is NOT a Palindrome.");
+            }
+
+            scanner.close();
         }
     }
 }
