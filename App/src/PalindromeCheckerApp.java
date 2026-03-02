@@ -1,28 +1,20 @@
 public class PalindromeCheckerApp {
-    import java.util.Scanner;
-
-    public class uc3 {
+        public static boolean isPalindrome(String input) {
+            LinkedList<Character> list = new LinkedList<>();
+            for (char c : input.toLowerCase().toCharArray()) {
+                list.add(c);
+            }
+            while (list.size() > 1) {
+                if (!list.removeFirst().equals(list.removeLast())) {
+                    return false;
+                }
+            }
+            return true;
+        }
 
         public static void main(String[] args) {
-
-            Scanner scanner = new Scanner(System.in);
-
-            System.out.print("Enter a string: ");
-            String original = scanner.nextLine();
-
-            String reversed = "";
-
-            for (int i = original.length() - 1; i >= 0; i--) {
-                reversed += original.charAt(i);
-            }
-
-            if (original.equals(reversed)) {
-                System.out.println("Palindrome ✅");
-            } else {
-                System.out.println("Not a Palindrome ❌");
-            }
-
-            scanner.close();
+            String input = "level";
+            System.out.println(isPalindrome(input));
         }
     }
 }
