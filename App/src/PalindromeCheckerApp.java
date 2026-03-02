@@ -1,40 +1,20 @@
 public class PalindromeCheckerApp {
-    import java.util.Scanner;
-
-    public class uc4 {
+        public static boolean isPalindrome(String input) {
+            LinkedList<Character> list = new LinkedList<>();
+            for (char c : input.toLowerCase().toCharArray()) {
+                list.add(c);
+            }
+            while (list.size() > 1) {
+                if (!list.removeFirst().equals(list.removeLast())) {
+                    return false;
+                }
+            }
+            return true;
+        }
 
         public static void main(String[] args) {
-
-            Scanner scanner = new Scanner(System.in);
-
-            System.out.print("Enter a string: ");
-            String input = scanner.nextLine();
-
-            char[] characters = input.toCharArray();
-
-            int start = 0;
-            int end = characters.length - 1;
-
-            boolean isPalindrome = true;
-
-            while (start < end) {
-
-                if (characters[start] != characters[end]) {
-                    isPalindrome = false;
-                    break;
-                }
-
-                start++;
-                end--;
-            }
-
-            if (isPalindrome) {
-                System.out.println("Palindrome ✅");
-            } else {
-                System.out.println("Not a Palindrome ❌");
-            }
-
-            scanner.close();
+            String input = "level";
+            System.out.println(isPalindrome(input));
         }
     }
 }
