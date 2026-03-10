@@ -1,36 +1,27 @@
 public class PalindromeCheckerApp {
-import java.util.Scanner;
+    public class PerformanceTest {
 
-    public class Main {
+        public static void testStrategy(PalindromeStrategy strategy, String input, String name) {
+
+            long startTime = System.nanoTime();
+
+            boolean result = strategy.checkPalindrome(input);
+
+            long endTime = System.nanoTime();
+
+            long duration = endTime - startTime;
+
+            System.out.println(name + " Result: " + result);
+            System.out.println(name + " Execution Time: " + duration + " ns\n");
+        }
 
         public static void main(String[] args) {
 
-            Scanner sc = new Scanner(System.in);
+            String input = "Never odd or even";
 
-            System.out.println("Choose Strategy: 1.Stack  2.Deque");
-            int choice = sc.nextInt();
-            sc.nextLine();
-
-            System.out.print("Enter a string: ");
-            String input = sc.nextLine();
-
-            PalindromeStrategy strategy;
-
-            if (choice == 1) {
-                strategy = new StackStrategy();
-            } else {
-                strategy = new DequeStrategy();
-            }
-
-            PalindromeChecker checker = new PalindromeChecker(strategy);
-
-            if (checker.checkPalindrome(input)) {
-                System.out.println("Palindrome");
-            } else {
-                System.out.println("Not a Palindrome");
-            }
-
-            sc.close();
+            testStrategy(new StackStrategy(), input, "Stack Strategy");
+            testStrategy(new DequeStrategy(), input, "Deque Strategy");
+            testStrategy(new TwoPointerStrategy(), input, "Two Pointer Strategy");
         }
     }
 }
