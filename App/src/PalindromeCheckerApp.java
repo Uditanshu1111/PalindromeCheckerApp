@@ -1,41 +1,33 @@
 public class PalindromeCheckerApp {
 import java.util.Scanner;
 
-    class PalindromeChecker {
-
-        public boolean checkPalindrome(String input) {
-            String normalized = input.replaceAll("\\s+", "").toLowerCase();
-            char[] arr = normalized.toCharArray();
-
-            int start = 0;
-            int end = arr.length - 1;
-
-            while (start < end) {
-                if (arr[start] != arr[end]) {
-                    return false;
-                }
-                start++;
-                end--;
-            }
-
-            return true;
-        }
-    }
-
     public class Main {
+
         public static void main(String[] args) {
 
             Scanner sc = new Scanner(System.in);
 
+            System.out.println("Choose Strategy: 1.Stack  2.Deque");
+            int choice = sc.nextInt();
+            sc.nextLine();
+
             System.out.print("Enter a string: ");
             String input = sc.nextLine();
 
-            PalindromeChecker checker = new PalindromeChecker();
+            PalindromeStrategy strategy;
+
+            if (choice == 1) {
+                strategy = new StackStrategy();
+            } else {
+                strategy = new DequeStrategy();
+            }
+
+            PalindromeChecker checker = new PalindromeChecker(strategy);
 
             if (checker.checkPalindrome(input)) {
-                System.out.println("The string is a Palindrome.");
+                System.out.println("Palindrome");
             } else {
-                System.out.println("The string is NOT a Palindrome.");
+                System.out.println("Not a Palindrome");
             }
 
             sc.close();
